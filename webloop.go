@@ -70,6 +70,18 @@ func (v *View) Open(url string) {
 	})
 }
 
+// LoadHTML starts loads from a string 
+func (v *View) LoadHTML(html, baseURI string) {
+	v.load = make(chan struct{}, 1)
+	v.lastLoadErr = nil
+	glib.IdleAdd(func() bool {
+		if !v.destroyed {
+			v.WebView.LoadHTML(html, baseURI)
+		}
+		return false
+	})
+}
+
 // Wait waits for the current page to finish loading.
 func (v *View) Wait() error {
 	<-v.load
