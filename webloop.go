@@ -2,7 +2,7 @@ package webloop
 
 import (
 	"errors"
-	"github.com/sourcegraph/go-webkit2/webkit2"
+	"github.com/paperlesspost/go-webkit2/webkit2"
 	"github.com/sqs/gojs"
 	"github.com/sqs/gotk3/glib"
 )
