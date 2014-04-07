@@ -26,6 +26,7 @@ func (c *Context) NewView() *View {
 		settings := webView.Settings()
 		settings.SetEnableWriteConsoleMessagesToStdout(true)
 		settings.SetUserAgentWithApplicationDetails("WebLoop", "v1")
+		settings.SetEnableWebgl(true)
 		v := &View{WebView: webView}
 		loadChangedHandler, _ := webView.Connect("load-changed", func(ctx *glib.CallbackContext) {
 			loadEvent := webkit2.LoadEvent(ctx.Arg(0).Int())
